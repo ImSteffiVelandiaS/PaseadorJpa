@@ -28,4 +28,35 @@ public class DuenioServicio {
     public List<Duenio> consultarTodos(){
         return  duenioRepositorio.findAll();
     }
+    // Method to update a Duenio by ID
+    public Duenio updateDuenioById(Integer documento, Duenio updatedDuenio) {
+        // Check if the Duenio exists
+        return duenioRepositorio.findById(documento).map(existingDuenio -> {
+            // Update fields
+            if (updatedDuenio.getNombre() != null) {
+                existingDuenio.setNombre(updatedDuenio.getNombre());
+            }
+            if (updatedDuenio.getApellido() != null) {
+                existingDuenio.setApellido(updatedDuenio.getApellido());
+            }
+            if (updatedDuenio.getTelefono() != null) {
+                existingDuenio.setTelefono(updatedDuenio.getTelefono());
+            }
+            if (updatedDuenio.getDireccion() != null) {
+                existingDuenio.setDireccion(updatedDuenio.getDireccion());
+            }
+            if (updatedDuenio.getCiudad() != null) {
+                existingDuenio.setCiudad(updatedDuenio.getCiudad());
+            }
+            if (updatedDuenio.getGenero() != null) {
+                existingDuenio.setGenero(updatedDuenio.getGenero());
+            }
+            if (updatedDuenio.getEmail() != null) {
+                existingDuenio.setEmail(updatedDuenio.getEmail());
+            }
+
+            // Save the updated Duenio
+            return duenioRepositorio.save(existingDuenio);
+        }).orElseThrow(() -> new RuntimeException("Duenio with ID " + documento + " not found"));
+    }
 }
