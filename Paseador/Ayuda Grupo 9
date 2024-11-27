@@ -1,0 +1,14 @@
+Crear nuevo paseo gestionando la relacion de muchos a muchos en tabla intermedia con perros
+
+{
+  "paseadorId": "1",
+  "perroIds": [1,2],
+  "paseo": {
+    "fecha": "2024-11-28",
+    "hora_inicio": "10:00:00",
+    "hora_fin": "11:30:00",
+    "distancia": 5.5,
+    "ruta": "Parque principal",
+    "valor": 150.0
+  }
+}
