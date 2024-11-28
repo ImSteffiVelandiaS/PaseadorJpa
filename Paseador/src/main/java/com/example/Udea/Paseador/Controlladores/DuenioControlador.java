@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/duenio")
+@CrossOrigin(origins = "http://localhost:4200")
 public class DuenioControlador {
 
     @Autowired
@@ -33,7 +34,9 @@ public class DuenioControlador {
 
     @GetMapping
     public  ResponseEntity<List<Duenio>> obtenerTodos(){
+
         List<Duenio> duenio = duenioServicio.consultarTodos();
+        System.out.println(duenio);
         return  new ResponseEntity<>(duenio, HttpStatus.OK);
     }
 

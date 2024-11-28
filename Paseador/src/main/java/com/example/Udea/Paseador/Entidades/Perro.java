@@ -30,7 +30,8 @@ public class Perro {
     @JsonIgnore
     private Duenio duenio;
 
-
+    @ManyToMany(mappedBy = "perro")
+    private List<Paseo> paseos;
 
     public Perro() {
     }

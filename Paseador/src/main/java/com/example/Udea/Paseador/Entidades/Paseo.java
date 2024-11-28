@@ -47,7 +47,7 @@ public class Paseo {
     @OneToMany(mappedBy = "paseo",fetch = FetchType.LAZY)
     private List<PaseoPerro> paseoPerros;
 
-    public Paseo(int id_paseo, LocalDate fecha, LocalTime hora_inicio, LocalTime hora_fin, float distancia, String ruta, float valor, Paseador paseador, List<Perro> perro) {
+    public Paseo(int id_paseo, LocalDate     fecha, LocalTime hora_inicio, LocalTime hora_fin, float distancia, String ruta, float valor, Paseador paseador, List<Perro> perro) {
         this.id_paseo = id_paseo;
         this.fecha = fecha;
         this.hora_inicio = hora_inicio;

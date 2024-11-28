@@ -27,7 +27,9 @@ public class PaseoServicio {
         Paseador paseador = paseadorRepositorio.findById(paseoRequest.getPaseadorId()).orElseThrow(() -> new RuntimeException("Paseador not found"));;
 
         List<Perro> perros = perroRepository.findAllById(paseoRequest.getPerroIds());
-
+        if (perros.isEmpty()) {
+            throw new RuntimeException("No se encontraron perros con los IDs proporcionados");
+        }
         paseo.setPerro(perros);
         paseo.setPaseador(paseador);
 
