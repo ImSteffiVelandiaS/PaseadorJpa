@@ -59,4 +59,14 @@ public class DuenioServicio {
             return duenioRepositorio.save(existingDuenio);
         }).orElseThrow(() -> new RuntimeException("Duenio with ID " + documento + " not found"));
     }
+
+
+    public boolean eliminarDuenio(int id) {
+        Optional<Duenio> duenio = duenioRepositorio.findById(id);
+        if (duenio.isPresent()) {
+            duenioRepositorio.deleteById(id);
+            return true;
+        }
+        return false;
+    }
 }

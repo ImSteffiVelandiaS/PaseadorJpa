@@ -40,5 +40,30 @@ public class DuenioControlador {
         return  new ResponseEntity<>(duenio, HttpStatus.OK);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Duenio> actualizarDuenio(@PathVariable int id, @RequestBody Duenio duenio) {
+        Optional<Duenio> duenioExistente = duenioServicio.buscarById(id);
+
+        if (duenioExistente.isPresent()) {
+            duenio.setId(id);  // Asegúrate de que el ID no cambie
+            Duenio duenioActualizado = duenioServicio.guardarDuenio(duenio);
+            return new ResponseEntity<>(duenioActualizado, HttpStatus.OK);
+        } else {
+            return ResponseEntity.notFound().build(); // Si no se encuentra el dueño, devuelve 404
+        }
+    }
+
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminarDuenio(@PathVariable int id) {
+        boolean eliminado = duenioServicio.eliminarDuenio(id);
+        if (eliminado) {
+            return ResponseEntity.noContent().build(); // Devuelve 204 No Content si se elimina correctamente
+        } else {
+            return ResponseEntity.notFound().build(); // Devuelve 404 Not Found si no se encuentra el dueño
+        }
+    }
+
 
 }
